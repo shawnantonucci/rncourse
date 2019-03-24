@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
   },
   placeImage: {
       marginRight: 8,
-      height: 100,
-      width: 100
+      height: 50,
+      width: 50
   }
 });
 
