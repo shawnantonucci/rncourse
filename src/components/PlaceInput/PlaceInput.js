@@ -26,7 +26,7 @@ class PlaceInput extends Component {
     return (
       <View style={styles.inputContainer}>
         <TextInput
-          placeholder="An awesome place"
+          placeholder="Add Text Here"
           value={this.state.placeName}
           onChangeText={this.placeNameChangedHandler}
           style={styles.placeInput}
@@ -50,7 +50,9 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   placeInput: {
-    width: "70%"
+    width: "70%",
+    borderColor: "grey",
+    borderWidth: 0.5
   },
   placeButton: {
     width: "30%"
