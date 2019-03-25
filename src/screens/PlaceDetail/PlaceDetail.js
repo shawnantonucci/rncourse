@@ -5,7 +5,8 @@ import {
   Text,
   Button,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from "react-native";
 import { connect } from "react-redux";
 import { deletePlace } from "../../store/actions/index";
@@ -13,23 +14,29 @@ import { deletePlace } from "../../store/actions/index";
 import Icon from "react-native-vector-icons/Ionicons";
 
 class PlaceDetail extends Component {
-
   placeDeletedHandler = () => {
     this.props.onDeletePlace(this.props.selectedPlace.key);
     this.props.navigator.pop();
-  }
+  };
 
   render() {
     return (
       <View style={styles.container}>
         <View>
-          <Image source={this.props.selectedPlace.image} style={styles.placeimage} />
+          <Image
+            source={this.props.selectedPlace.image}
+            style={styles.placeimage}
+          />
           <Text style={styles.placeName}>{this.props.selectedPlace.name}</Text>
         </View>
         <View>
           <TouchableOpacity onPress={this.placeDeletedHandler}>
             <View style={styles.deleteButton}>
-              <Icon size={30} name="ios-trash" color="red" />
+              <Icon
+                size={30}
+                name={Platform.OS === "android" ? "md-trash" : "ios-trash"}
+                color="red"
+              />
             </View>
           </TouchableOpacity>
         </View>
@@ -62,4 +69,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(PlaceDetail);
+export default connect(
+  null,
+  mapDispatchToProps
+)(PlaceDetail);
