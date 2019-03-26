@@ -11,7 +11,7 @@ import {
 import { connect } from "react-redux";
 
 import { addPlace } from "../../store/actions/index";
-import PlaceInput from "./../../components/PlaceInput/PlaceInput";
+import PlaceInput from "../../components/PlaceInput/PlaceInput";
 import MainText from "../../components/UI/MainText/MainText";
 import HeadingText from "../../components/UI/HeadingText/HeadingText";
 import PickImage from "../../components/PickImage/PickImage";
@@ -54,7 +54,7 @@ class SharePlaceScreen extends Component {
       <ScrollView>
         <View style={styles.container}>
           <MainText>
-            <HeadingText>Share a place with us!</HeadingText>
+            <HeadingText>Share a Place with us!</HeadingText>
           </MainText>
           <PickImage />
           <PickLocation />
@@ -98,7 +98,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(SharePlaceScreen);
+export default connect(null, mapDispatchToProps)(SharePlaceScreen);
