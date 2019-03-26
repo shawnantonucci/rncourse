@@ -17,8 +17,12 @@ class FindPlaceScreen extends Component {
 
   state = {
     placesLoaded: false,
+<<<<<<< HEAD
     removeAnim: new Animated.Value(1),
     placesAnim: new Animated.Value(0)
+=======
+    removeAnim: new Animated.Value(1)
+>>>>>>> 49b3868df0e2f7902303adc4fe5bde2f57014319
   };
 
   constructor(props) {
@@ -36,6 +40,7 @@ class FindPlaceScreen extends Component {
     }
   };
 
+<<<<<<< HEAD
   placesLoadedHandler = () => {
     Animated.timing(this.state.placesAnim, {
       toValue: 1,
@@ -44,17 +49,23 @@ class FindPlaceScreen extends Component {
     }).start();
   };
 
+=======
+>>>>>>> 49b3868df0e2f7902303adc4fe5bde2f57014319
   placesSearchHandler = () => {
     Animated.timing(this.state.removeAnim, {
       toValue: 0,
       duration: 500,
       useNativeDriver: true
+<<<<<<< HEAD
     }).start(() => {
       this.setState({
         placesLoaded: true
       });
       this.placesLoadedHandler();
     });
+=======
+    }).start();
+>>>>>>> 49b3868df0e2f7902303adc4fe5bde2f57014319
   };
 
   itemSelectedHandler = key => {
@@ -73,6 +84,7 @@ class FindPlaceScreen extends Component {
   render() {
     let content = (
       <Animated.View
+<<<<<<< HEAD
         style={{
           opacity: this.state.removeAnim,
           transform: [
@@ -84,6 +96,19 @@ class FindPlaceScreen extends Component {
             }
           ]
         }}
+=======
+      style={{
+        opacity: this.state.removeAnim,
+        transform: [
+          {
+            scale: this.state.removeAnim.interpolate({
+              inputRange: [0, 1],
+              outputRange: [12, 1]
+            })
+          }
+        ]
+      }}
+>>>>>>> 49b3868df0e2f7902303adc4fe5bde2f57014319
       >
         <TouchableOpacity onPress={this.placesSearchHandler}>
           <View style={styles.searchButton}>
@@ -94,6 +119,7 @@ class FindPlaceScreen extends Component {
     );
     if (this.state.placesLoaded) {
       content = (
+<<<<<<< HEAD
         <Animated.View
           style={{
             opacity: this.state.placesAnim
@@ -104,6 +130,12 @@ class FindPlaceScreen extends Component {
             onItemSelected={this.itemSelectedHandler}
           />
         </Animated.View>
+=======
+        <PlaceList
+          places={this.props.places}
+          onItemSelected={this.itemSelectedHandler}
+        />
+>>>>>>> 49b3868df0e2f7902303adc4fe5bde2f57014319
       );
     }
     return (
