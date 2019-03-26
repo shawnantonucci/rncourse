@@ -17,12 +17,8 @@ class FindPlaceScreen extends Component {
 
   state = {
     placesLoaded: false,
-<<<<<<< HEAD
     removeAnim: new Animated.Value(1),
     placesAnim: new Animated.Value(0)
-=======
-    removeAnim: new Animated.Value(1)
->>>>>>> 49b3868df0e2f7902303adc4fe5bde2f57014319
   };
 
   constructor(props) {
