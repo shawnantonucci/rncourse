@@ -21,7 +21,6 @@ import ButtonWithBackground from "../../components/UI/ButtonWithBackground/Butto
 import backgroundImage from "../../assets/background.jpg";
 import validate from "../../utility/validation";
 import { tryAuth } from "./../../store/actions/auth";
-import { tsThisType } from "@babel/types";
 
 class AuthScreen extends Component {
   state = {
@@ -177,7 +176,7 @@ class AuthScreen extends Component {
           >
             Switch to {this.state.authMode === "login" ? "Sign Up" : "Login"}
           </ButtonWithBackground>
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.inputContainer}>
               <DefaultInput
                 placeholder="Your E-Mail Address"
