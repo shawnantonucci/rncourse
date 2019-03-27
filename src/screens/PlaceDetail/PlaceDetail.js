@@ -10,9 +10,10 @@ import {
   Dimensions
 } from "react-native";
 import { connect } from "react-redux";
-import { deletePlace } from "../../store/actions/index";
+import MapView from "react-native-maps";
 
 import Icon from "react-native-vector-icons/Ionicons";
+import { deletePlace } from "../../store/actions/index";
 
 class PlaceDetail extends Component {
   state = {
@@ -49,11 +50,28 @@ class PlaceDetail extends Component {
             : styles.landscapeContainer
         ]}
       >
-        <View style={styles.subContainer}>
-          <Image
-            source={this.props.selectedPlace.image}
-            style={styles.placeimage}
-          />
+        <View style={styles.placeDetailContainer} >
+          <View style={styles.subContainer}>
+            <Image
+              source={this.props.selectedPlace.image}
+              style={styles.placeimage}
+            />
+          </View>
+          <View style={styles.subContainer}>
+            <MapView
+              initialRegion={{
+                ...this.props.selectedPlace.location,
+                latitudeDelta: 0.0122,
+                longitudeDelta:
+                  (Dimensions.get("window").width /
+                    Dimensions.get("window").height) *
+                  0.0122
+              }}
+              style={styles.map}
+            >
+              <MapView.Marker coordinate={this.props.selectedPlace.location} />
+            </MapView>
+          </View>
         </View>
         <View style={styles.subContainer}>
           <View>
@@ -89,14 +107,20 @@ const styles = StyleSheet.create({
   landscapeContainer: {
     flexDirection: "row"
   },
+  placeDetailContainer: {
+    flex: 2
+  },
   placeimage: {
     width: "100%",
-    height: 200
+    height: "100%"
   },
   placeName: {
     fontWeight: "bold",
     textAlign: "center",
     fontSize: 28
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject
   },
   deleteButton: {
     alignItems: "center"
