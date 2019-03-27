@@ -20,7 +20,7 @@ import MainText from "../../components/UI/MainText/MainText";
 import ButtonWithBackground from "../../components/UI/ButtonWithBackground/ButtonWithBackground";
 import backgroundImage from "../../assets/background.jpg";
 import validate from "../../utility/validation";
-import { tryAuth } from "./../../store/actions/auth";
+import { tryAuth } from "../../store/actions/index";
 
 class AuthScreen extends Component {
   state = {
@@ -143,7 +143,6 @@ class AuthScreen extends Component {
         </MainText>
       );
     }
-
     if (this.state.authMode === "signup") {
       confirmPasswordControl = (
         <View
@@ -165,7 +164,6 @@ class AuthScreen extends Component {
         </View>
       );
     }
-
     return (
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
         <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -223,10 +221,9 @@ class AuthScreen extends Component {
             color="#29aaf4"
             onPress={this.loginHandler}
             disabled={
-              (!this.state.controls.confirmPassword.valid &&
-                this.state.authMode === "signup") ||
+              !this.state.controls.confirmPassword.valid && this.state.authMode === "signup" ||
               !this.state.controls.email.valid ||
-              !this.state.controls.password
+              !this.state.controls.password.valid
             }
           >
             Submit
@@ -276,7 +273,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(AuthScreen);
+export default connect(null, mapDispatchToProps)(AuthScreen);
