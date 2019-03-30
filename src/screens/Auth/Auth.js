@@ -156,7 +156,6 @@ class AuthScreen extends Component {
         </MainText>
       );
     }
-
     if (this.state.authMode === "signup") {
       confirmPasswordControl = (
         <View
@@ -178,11 +177,9 @@ class AuthScreen extends Component {
         </View>
       );
     }
-
     if (this.props.isLoading) {
       submitButton = <ActivityIndicator />;
     }
-
     return (
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
         <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -288,7 +285,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AuthScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthScreen);
