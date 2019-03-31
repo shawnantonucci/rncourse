@@ -13,17 +13,16 @@ export const addPlace = (placeName, location, image) => {
         })
       }
     )
-      .catch(err => {
-        console.log(err);
-        dispatch(uiStopLoading());
-      })
       .then(res => res.json())
       .then(parsedRes => {
         const placeData = {
           name: placeName,
           location: location,
           image: parsedRes.imageUrl
-        };
+        }.catch(err => {
+          console.log(err);
+          dispatch(uiStopLoading());
+        });
         return fetch(
           "https://rn-course-1553656358152.firebaseio.com//places.json",
           {
@@ -65,6 +64,10 @@ export const getPlaces = () => {
           });
         }
         dispatch(setPlaces(places));
+      })
+      .catch(err => {
+        alert("Something went wrong, sorry :/");
+        console.log(err);
       });
   };
 };
@@ -85,13 +88,13 @@ export const deletePlace = key => {
         method: "DELETE"
       }
     )
-      .catch(err => {
-        alert("Something went wrong, sorry :/");
-        console.log(err);
-      })
       .then(res => res.json())
       .then(parsedRes => {
         console.log("Done");
+      })
+      .catch(err => {
+        alert("Something went wrong, sorry :/");
+        console.log(err);
       });
   };
 };
