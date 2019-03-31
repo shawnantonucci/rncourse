@@ -6,7 +6,6 @@ export const tryAuth = (authData, authMode) => {
   return dispatch => {
     dispatch(uiStartLoading());
     const apiKey = "AIzaSyACK6whVg6XYYnQgteBrI8spdjrIzrhs0w";
-
     let url =
       "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" +
       apiKey;
@@ -49,5 +48,19 @@ export const authSetToken = token => {
   return {
     type: AUTH_SET_TOKEN,
     token: token
+  };
+};
+
+export const authGetToken = () => {
+  return (dispatch, getState) => {
+      const promise = new Promise((resolve, reject) => {
+          const token = getState().auth.token;
+          if (!token) {
+              reject();
+          } else {
+              resolve(token);
+          }
+      });  
+      return promise;
   };
 };
