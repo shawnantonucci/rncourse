@@ -17,7 +17,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         places: action.places
       };
-
     case REMOVE_PLACE:
       return {
         ...state,
@@ -25,13 +24,11 @@ const reducer = (state = initialState, action) => {
           return place.key !== action.key;
         })
       };
-
     case START_ADD_PLACE:
       return {
         ...state,
         placeAdded: false
       };
-
     case PLACE_ADDED:
       return {
         ...state,
