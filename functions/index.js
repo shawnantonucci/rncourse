@@ -5,14 +5,14 @@ const fs = require("fs");
 const UUID = require("uuid-v4");
 
 const gcconfig = {
-  projectId: "rn-course-1553656358152",
-  keyFilename: "rn-course.json"
+  projectId: "sharexsocial",
+  keyFilename: "sharexsocial.json"
 };
 
 const gcs = require("@google-cloud/storage")(gcconfig);
 
 admin.initializeApp({
-  credential: admin.credential.cert(require("./rn-course.json"))
+  credential: admin.credential.cert(require("./sharexsocial.json"))
 });
 
 // // Create and Deploy Your First Cloud Functions
@@ -44,7 +44,7 @@ exports.storeImage = functions.https.onRequest((request, response) => {
             return response.status(500).json({ error: err });
           }
         );
-        const bucket = gcs.bucket("rn-course-1553656358152.appspot.com");
+        const bucket = gcs.bucket("sharexsocial.appspot.com");
         const uuid = UUID();
 
         bucket.upload(
@@ -91,6 +91,6 @@ exports.deleteImage = functions.database
     const placeData = snapshot.val();
     const imagePath = placeData.imagePath;
 
-    const bucket = gcs.bucket("rn-course-1553656358152.appspot.com");
+    const bucket = gcs.bucket("sharexsocial.appspot.com");
     return bucket.file(imagePath).delete();
   });
