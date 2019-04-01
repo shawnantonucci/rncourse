@@ -23,7 +23,7 @@ export const addPlace = (placeName, location, image) => {
       .then(token => {
         authToken = token;
         return fetch(
-          "https://us-central1-rn-course-1553656358152.cloudfunctions.net/storeImage",
+          "https://us-central1-sharexsocial.cloudfunctions.net/storeImage",
           {
             method: "POST",
             body: JSON.stringify({
@@ -51,10 +51,11 @@ export const addPlace = (placeName, location, image) => {
         const placeData = {
           name: placeName,
           location: location,
-          image: parsedRes.imageUrl
+          image: parsedRes.imageUrl,
+          imagePath: parsedRes.imagePath
         };
         return fetch(
-          "https://rn-course-1553656358152.firebaseio.com/places.json?auth=" +
+          "https://sharexsocial.firebaseio.com/places.json?auth=" +
             authToken,
           {
             method: "POST",
@@ -93,7 +94,7 @@ export const getPlaces = () => {
     dispatch(authGetToken())
       .then(token => {
         return fetch(
-          "https://rn-course-1553656358152.firebaseio.com/places.json?auth=" +
+          "https://sharexsocial.firebaseio.com/places.json?auth=" +
             token
         );
       })
@@ -143,7 +144,7 @@ export const deletePlace = key => {
       .then(token => {
         dispatch(removePlace(key));
         return fetch(
-          "https://rn-course-1553656358152.firebaseio.com/places" +
+          "https://sharexsocial.firebaseio.com/places/" +
             key +
             ".json?auth=" +
             token,
@@ -152,13 +153,7 @@ export const deletePlace = key => {
           }
         );
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error();
-        }
-      })
+      .then(res => res.json())
       .then(parsedRes => {
         console.log("Done!");
       })

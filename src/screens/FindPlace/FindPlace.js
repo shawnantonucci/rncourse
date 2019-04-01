@@ -33,7 +33,7 @@ class FindPlaceScreen extends Component {
         this.props.onLoadPlaces();
         // this.setState({
         //   placesLoaded: false
-        // })
+        // });
       }
     }
     if (event.type === "NavBarButtonPress") {
@@ -129,12 +129,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  listContainer: {
-    borderColor: "orange",
-    borderWidth: 3,
-    borderRadius: 50,
-    padding: 20
-  },
   searchButton: {
     borderColor: "orange",
     borderWidth: 3,
@@ -160,7 +154,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FindPlaceScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(FindPlaceScreen);
