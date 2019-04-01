@@ -130,15 +130,15 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   searchButton: {
-    borderColor: "orange",
-    borderWidth: 3,
-    borderRadius: 50,
+    // borderColor: "orange",
+    // borderWidth: 3,
+    // borderRadius: 50,
     padding: 20
   },
   searchButtonText: {
-    color: "orange",
+    color: "black",
     fontWeight: "bold",
-    fontSize: 26
+    fontSize: 38
   }
 });
 

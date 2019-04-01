@@ -105,8 +105,9 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   map: {
-    width: "100%",
-    height: 250
+    marginTop: 20,
+    width: "80%",
+    height:280
   },
   button: {
     margin: 8
